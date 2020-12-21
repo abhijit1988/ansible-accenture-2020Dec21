@@ -1,0 +1,31 @@
+    1  apt-get update ; apt-get install ansible -y 
+    2  ansible --version 
+    3  ip addr 
+    4  ping 10.0.0.5
+    5  ls
+    6  git clone https://github.com/amitvashisttech/ansible-accenture-2020Dec21.git
+    7  ls
+    8  cd ansible-accenture-2020Dec21/
+    9  ls
+   10  mkdir 01-Inventory 
+   11  ls
+   12  cd 01-Inventory/
+   13  ls
+   14  ansible --version 
+   15  ls
+   16  vim inventory
+   17  ls
+   18  ansible all -i inventory -m ping -u ansibleuser -k
+   19  apt-get install sshpass -y 
+   20  ansible all -i inventory -m ping -u ansibleuser -k
+   21  ssh ansibleuser@10.0.0.5
+   22  ansible all -i inventory -m ping -u ansibleuser -k
+   23  ssh ansibleuser@10.0.0.6
+   24  ansible all -i inventory -m ping -u ansibleuser -k
+   25  cat /root/.ssh/known_hosts 
+   26  cat inventory 
+   27  ls
+   28  c d..
+   29  cd ..
+   30  ls
+   31  history > Day1.txt
