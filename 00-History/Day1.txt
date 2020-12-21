@@ -29,3 +29,80 @@
    29  cd ..
    30  ls
    31  history > Day1.txt
+   32  mkdir 00-History
+   33  ls
+   34  mv Day1.txt 00-History/
+   35  ls
+   36  git config credential.helper store
+   37  git add . ; git commit -m "01-Inventory"; git push 
+   38  cat 01-Inventory/inventory 
+   39  ls
+   40  cat 00-History/Day1.txt 
+   41  ls
+   42  cd 01-Inventory/
+   43  ls
+   44  cat inventory 
+   45  ansible all -i invent^Cy -m ping -u ansibleuser -k
+   46  ansible 10.0.0.5 -i inventory -m ping -u ansibleuser -k
+   47  ansible 10.0.0.5  -m ping -u ansibleuser -k
+   48  ls
+   49  vim inventory 
+   50  ansible DB -i inventory -m ping -u ansibleuser -k
+   51  ansible WEB -i inventory -m ping -u ansibleuser -k
+   52  cat inventory 
+   53  vi inventory 
+   54  ansible all -i inventory -m ping -u ansibleuser -k
+   55  vim inventory 
+   56  ansible all -i inventory -m ping -u ansibleuser -k
+   57  ansible DB -i inventory -m ping -u ansibleuser -k
+   58  ansible PROD -i inventory -m ping -u ansibleuser -k
+   59  cd ..
+   60  ls
+   61  cat 01-Inventory/inventory 
+   62  ls
+   63  cd 01-Inventory/
+   64  ls
+   65  vim inventory 
+   66  ansible DC -i inventory -m ping -u ansibleuser -k
+   67  vim inventory 
+   68  ansible US -i inventory -m ping -u ansibleuser -k
+   69  ls
+   70  ansible US -i inventory -m ping -u ansibleuser -kls
+   71  ls
+   72  vim inventory 
+   73  ansible US -i inventory -m ping 
+   74  ansible DC -i inventory -m ping 
+   75  cat inventory 
+   76  ls
+   77  vim inventory 
+   78  ls
+   79  ansible DB -i inventory -m ping 
+   80  ansible WEB -i inventory -m ping 
+   81  ansible PROD -i inventory -m ping 
+   82  ansible UAT -i inventory -m ping 
+   83  ansible 'PROD:UAT' -i inventory -m ping 
+   84  ansible 'PROD:&WEB' -i inventory -m ping 
+   85  ansible 'PROD:&DB' -i inventory -m ping 
+   86  ansible 'UAT:&DB' -i inventory -m ping 
+   87  ls
+   88  vim inventory 
+   89  ansible 'PROD:&WEB' -i inventory -m ping 
+   90  ansible 'PROD:&WEB:!ansible' -i inventory -m ping 
+   91  ls
+   92  vim inventory 
+   93  ansible all  -i inventory -m ping 
+   94  cat /etc/ansible/hosts 
+   95  ls
+   96  cat /etc/hosts
+   97  vim /etc/hosts
+   98  ping web
+   99  vim inventory 
+  100  ansible mydomain -i inventory -m ping 
+  101  ssh ansibleuser@web.mydomain.net
+  102  ansible mydomain -i inventory -m ping 
+  103  vim inventory 
+  104  ansible mydomain -i inventory -m ping 
+  105  ls
+  106  cd ..
+  107  ls
+  108  history > 00-History/Day1.txt 
