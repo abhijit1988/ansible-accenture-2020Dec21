@@ -1,0 +1,24 @@
+ 305  cd 03-ScaleOutInventory/
+  306  ls
+  307  vim prod/inventory_prod
+  308  ansible all -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
+  309  vim prod/inventory_prod
+  310  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
+  311  cp -rf prod/group_vars/DB prod/group_vars/PROD
+  312  vim prod/group_vars/PROD
+  313  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
+  314  vim prod/inventory_prod
+  315  ls
+  316  tree prod/
+  317  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
+  318  vim prod/inventory_prod
+  319  ls
+  320  tree prod/
+  321  cat prod/group_vars/WEB
+  322  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
+  323  ls
+  324  mv prod/group_vars/DB .
+  325  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
+  326  vim prod/host_vars/10.0.0.7
+  327  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
+  328  ansible all -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
