@@ -1,0 +1,29 @@
+10.0.0.4 ansible_ssh_user=amitvashist ansible_ssh_pass=Pass@word!
+34.67.164.203 ansible_ssh_user=root ansible_ssh_pass=Pass@word!
+
+
+
+[DB]
+10.0.0.5
+
+[WEB]
+10.0.0.7
+34.67.164.203 
+
+[PROD]
+10.0.0.5
+10.0.0.7
+
+
+[DC:children]
+DB
+WEB
+PROD
+ansible
+
+[ansible]
+10.0.0.4
+
+[DC:vars]
+ansible_ssh_user=ansibleuser
+ansible_ssh_pass=Pass@word432!
