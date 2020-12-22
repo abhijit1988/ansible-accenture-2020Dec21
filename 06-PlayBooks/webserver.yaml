@@ -1,0 +1,36 @@
+---
+# Our First Playbook
+
+- hosts: WEB
+  become: yes
+  tasks:
+  - name: Install Apache Packages 
+    apt: name=apache2 state=present
+
+  - name: Deploy Custom Web Page
+    copy: src=files/index.html dest=/var/www/html/info.html
+
+  - name: Start Apache Service
+    service: name=apache2 state=started enabled=True
+
+
+
+
+- hosts: DB
+  become: yes
+  tasks:
+  - name: Install Apache Packages 
+    apt: name=apache2 state=present
+
+  - name: Deploy Custom Web Page
+    copy: src=files/index-db.html dest=/var/www/html/info.html
+
+  - name: Start Apache Service
+    service: name=apache2 state=started enabled=True
+
+
+- hosts: WEB:DB
+  become: yes
+  tasks:
+  - name: Deploy Custom Web Page
+    copy: src=files/common.html dest=/var/www/html/common.html
