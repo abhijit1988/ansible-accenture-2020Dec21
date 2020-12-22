@@ -1,0 +1,15 @@
+  439  cd 05-Gathering_Facts/
+  440  ls
+  441  ansible 10.0.0.4 -m setup
+  442  ansible 10.0.0.4 -m setup -a "filter=ansible_os_family"
+  443  ansible 10.0.0.4 -m setup -a "filter=ansible_all_ipv4_addresses"
+  444  ansible all -m setup -a "filter=ansible_all_ipv4_addresses"
+  445  ansible 10.0.0.4 -m setup --tree ./setup
+  446  ls
+  447  cd setup/
+  448  ls
+  449  grep -i hostname 10.0.0.4
+  450  cd ..
+  451  ls
+  452  ansible all -m setup -a "filter=ansible_hostname"
+
