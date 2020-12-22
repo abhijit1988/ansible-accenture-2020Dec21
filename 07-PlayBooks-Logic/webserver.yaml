@@ -1,0 +1,24 @@
+---
+# Our First Playbook
+
+- hosts: WEB:DB
+  become: yes
+  tasks:
+  - name: Install HTTPD Packages
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+
+  - name: Start HTTPD Service
+    service: name=httpd state=started enabled=True
+    when: ansible_os_family == "RedHat"
+
+  - name: Install Apache Packages 
+    apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+
+  - name: Deploy Custom Web Page
+    copy: src=files/index.html dest=/var/www/html/info.html
+
+  - name: Start Apache Service
+    service: name=apache2 state=started enabled=True
+    when: ansible_os_family == "Debian"
