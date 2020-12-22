@@ -1,24 +1,28 @@
- 305  cd 03-ScaleOutInventory/
-  306  ls
-  307  vim prod/inventory_prod
-  308  ansible all -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
-  309  vim prod/inventory_prod
-  310  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
-  311  cp -rf prod/group_vars/DB prod/group_vars/PROD
-  312  vim prod/group_vars/PROD
-  313  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
-  314  vim prod/inventory_prod
-  315  ls
-  316  tree prod/
-  317  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
-  318  vim prod/inventory_prod
-  319  ls
-  320  tree prod/
-  321  cat prod/group_vars/WEB
-  322  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
-  323  ls
-  324  mv prod/group_vars/DB .
-  325  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
-  326  vim prod/host_vars/10.0.0.7
-  327  ansible PROD -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
-  328  ansible all -i prod/inventory_prod -m user -a "name={{username}} password=12345" -s
+390  cd ansible-accenture-2020Dec21/04-AnsibleConfig/
+  391  ansible all -i inventory -m ping
+  392  cat /root/.ssh/known_hosts
+  393  ls
+  394  vim inventory
+  395  ls
+  396  vim ansible.cfg
+  397  ls
+  398  mv inventory hosts
+  399  ansible all -m ping
+  400  vi  /etc/ansible/ansible.cfg
+  401  vi ansible.cfg
+  402  touch /var/log/ansible.log
+  403  vi  /etc/ansible/ansible.cfg
+  404  vi ansible.cfg
+  405  ansible all -m service -a "name=apache2 state=started"
+  406  ansible all -m apt -a "name=apache2 state=present"
+  407  ls -ltr /var/log/ansible.log
+  408  cat /var/log/ansible.log
+  409  vim /etc/ansible/ansible.cfg
+  410  ls
+  411  cd ..
+  412  ls
+  413  git add . ; git commit -m "04-AnsibleConfig"; git push
+  414  ls
+  415  echo "Test 1" >> README.md
+  416  git add . ; git commit -m "04-AnsibleConfig"; git push
+
