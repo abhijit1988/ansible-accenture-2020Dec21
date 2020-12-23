@@ -1,0 +1,52 @@
+---
+# Our First Playbook
+
+- hosts: WEB:DB
+  become: yes
+  vars:
+    doc_root: /var/www/html/mywebappv2
+  tasks:
+  - name: Install HTTPD Packages
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+
+  - name: Start HTTPD Service
+    service: name=httpd state=started enabled=True
+    when: ansible_os_family == "RedHat"
+
+  - name: Install Apache Packages 
+    apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+
+  - name: Purge the old dir
+    file: path=/var/www/html/ state=absent
+
+  - name: Create Site Location
+    file: path={{doc_root}} state=directory mode=0755
+
+  - name: Check the files
+    command: ls {{doc_root}}/web.html
+    register: result
+    ignore_errors: yes
+
+  - debug: msg="Unable to find web.html webpage"
+    when: result|failed
+ 
+  - debug: msg="The file has been located - web.html"
+    when: result|success
+
+  - name: Deploy Custom Web Page
+    copy: src=files/web.html dest={{doc_root}}/web.html
+    when: result|failed
+
+
+  - name: Start Apache Service
+    service: name=apache2 state=started enabled=True
+    when: ansible_os_family == "Debian"
+
+  - name: Deploy Custom Web Page
+    template: src=templates/info.j2 dest={{doc_root}}/info.html
+
+  - name: Deploy Template Web Page
+    template: src=templates/sample.j2 dest={{doc_root}}/sample.html
+
