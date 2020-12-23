@@ -1,0 +1,6 @@
+---
+
+- hosts: WEB
+  become: yes
+  roles:
+  - server-common
