@@ -1,0 +1,7 @@
+---
+
+- hosts: WEB
+  become: yes
+  roles:
+  - lamp-dep
+  - lamp
