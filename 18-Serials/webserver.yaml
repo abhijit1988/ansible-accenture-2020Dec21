@@ -1,0 +1,13 @@
+---
+
+- hosts: WEB:DB
+  become: yes
+  vars:
+    change_id: CH0000721
+  pre_tasks:
+  - include: roles/pre-post-task/pre-task.yaml
+  roles:
+  - webserver
+  - firewalld
+  post_tasks:
+  - include: roles/pre-post-task/post-task.yaml

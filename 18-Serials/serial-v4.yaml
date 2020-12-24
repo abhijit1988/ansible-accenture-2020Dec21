@@ -1,0 +1,8 @@
+---
+
+- hosts: PROD
+  become: yes
+  serial:
+    - "25%"
+    - "50%"
+    - "25%"
