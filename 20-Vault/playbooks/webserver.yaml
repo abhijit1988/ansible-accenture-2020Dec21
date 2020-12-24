@@ -1,0 +1,14 @@
+---
+
+- hosts: WEB:DB
+  name: "Apache WebServer Deployment"
+  become: yes
+  vars:
+    change_id: CH0000721
+  pre_tasks:
+  - include: ../roles/pre-post-task/pre-task.yaml
+  roles:
+  - ../roles/webserver
+  - ../roles/firewalld
+  post_tasks:
+  - include: ../roles/pre-post-task/post-task.yaml

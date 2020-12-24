@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  become: yes
+  tasks:
+  - name: Check Hostname of the Remote Server
+    shell: echo "Hostname:" {{inventory_hostname}} >> /tmp/hostname.txt
+    delegate_to: 10.0.0.4
+
+- include: playbooks/webserver.yaml
+  tags: web 
+- include: playbooks/server-common.yaml
+  tags: common

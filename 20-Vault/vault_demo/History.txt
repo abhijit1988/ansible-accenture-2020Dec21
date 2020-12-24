@@ -1,0 +1,29 @@
+ 1373  cp -rf 19-Tags 20-Vault
+ 1375  cd 20-Vault/
+ 1377  mkdir vault_demo
+ 1378  cd vault_demo/
+ 1380  echo  "Welcome to Ansible Vault Demo"  > encrypt_me.txt
+ 1383  /usr/local/bin/ansible-vault encrypt_me.txt 
+ 1384  /usr/local/bin/ansible-vault encrypt encrypt_me.txt 
+ 1387  /usr/local/bin/ansible-vault view encrypt_me.txt 
+ 1388  /usr/local/bin/ansible-vault edit encrypt_me.txt 
+ 1390  /usr/local/bin/ansible-vault edit encrypt_me.txt 
+ 1393  /usr/local/bin/ansible-vault decrypt encrypt_me.txt 
+ 1399  /usr/local/bin/ansible-vault encrypt encrypt_me.txt 
+ 1405  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" --ask-vault-pass
+ 1406  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" --ask-vault-pass -s 
+ 1407  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" -s --ask-vault-pass 
+ 1408  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" --sudo --ask-vault-pass 
+ 1409  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" -b --ask-vault-pass 
+ 1411  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" -b --ask-vault-pass 
+ 1412  echo "redhat" > .vault_pass
+ 1413  /usr/local/bin/ansible-vault edit encrypt_me.txt 
+ 1414  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" -b --vault-password-file=.vault_pass 
+ 1420  mv .vault_pass /root/.mypvt/
+ 1424  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" -b --vault-password-file=/root/.mypvt/.vault_pass 
+ 1428  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=vault_demo/encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" -b 
+ 1429  /usr/local/bin/ansible-vault edit vault_demo/encrypt_me.txt 
+ 1430  /usr/local/bin/ansible 10.0.0.4 -i hosts -m copy -a "src=vault_demo/encrypt_me.txt dest=/tmp/encrypt_me.txt mode=0600 owner=root group=root" -b 
+ 1432  cat  /root/.mypvt/.vault_pass
+ 1440  history | grep -i vault
+ 1441  history | grep -i vault > 20-Vault/vault_demo/History.txt
