@@ -1,0 +1,43 @@
+---
+# tasks file for webserver
+- name: Install HTTPD Packages
+  yum: name=httpd state=present
+  when: ansible_os_family == "RedHat"
+
+- name: Start HTTPD Service
+  service: name=httpd state=started enabled=True
+  when: ansible_os_family == "RedHat"
+
+- name: Install Apache Packages 
+  apt: name=apache2 state=present
+  when: ansible_os_family == "Debian"
+
+- name: Deploy Custom Apache2 Configuration
+  template: src=templates/apache2.conf.j2 dest=/etc/apache2/apache2.conf
+  notify:
+    - Restart Apache
+
+- name: Force to run my handlre
+  meta: flush_handlers
+   
+
+- name: Create Site Location
+  file: path={{doc_root}} state=directory mode=0755
+
+- name: Deploy Custom Web Page
+  copy: src=files/web.html dest={{doc_root}}/web.html
+  notify:
+    - Restart Apache
+
+- name: Start Apache Service
+  service: name=apache2 state=started enabled=True
+  when: ansible_os_family == "Debian"
+
+- name: Download Mario Background Image
+  get_url: url="https://freepngimg.com/thumb/super_mario/30917-5-super-mario-kart-clipart.png" dest={{doc_root}}/back.jpg mode=0755
+
+- name: Deploy Custom Info Page with Uptime
+  template: src=templates/info.j2 dest={{doc_root}}/info.html
+
+- name: Deploy Template Web Page
+  template: src=templates/sample.j2 dest={{doc_root}}/sample.html

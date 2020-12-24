@@ -1,0 +1,7 @@
+---
+
+- hosts: WEB
+  name: "Basic Common Tasks"
+  become: yes
+  roles:
+  - ../roles/server-common
