@@ -2,4 +2,3 @@
 # vars file for webserver
 doc_root: /var/www/html/mywebappv2
 http_port: 88
-sitename: testing-roles-webserver
